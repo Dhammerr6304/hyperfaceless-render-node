@@ -1,0 +1,29 @@
+{
+  "name": "hyperfaceless-render-node",
+  "version": "0.1.0",
+  "description": "Webhook wrapper around Hyperframes for HyperFaceless budget-mode video rendering. Deploy to Railway with one click.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhammerr6304/hyperfaceless-render-node.git"
+  },
+  "keywords": [
+    "hyperframes",
+    "video",
+    "render",
+    "railway",
+    "hyperfaceless"
+  ]
+}

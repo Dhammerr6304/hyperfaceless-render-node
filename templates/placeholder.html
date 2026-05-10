@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HyperFaceless Placeholder</title>
+  <!--
+    PLACEHOLDER COMPOSITION FOR HYPERFRAMES BUDGET MODE.
+
+    This file exists ONLY to prove that the budget-mode wiring works end-to-end
+    (toggle → router → Railway webhook → hyperframes render → MP4 output).
+
+    It is NOT production-quality visual content. The real composition is a
+    follow-on task that should design a true vertical short-form video layout
+    (token ticker, price chart, animated captions synced to ElevenLabs MP3,
+    branded outro, etc.).
+
+    Token replacements injected by server.js:
+      {{TOKEN}}        — token symbol (e.g., "PEPE")
+      {{SCRIPT}}       — raw script text (HTML-escaped)
+      {{AUDIO_URL}}    — public URL to ElevenLabs MP3
+      {{CAPTIONS_JSON}}— JSON-stringified captions array (HTML-escaped)
+  -->
+  <style>
+    :root {
+      --accent: #00ff9d;
+      --bg: #0a0a0a;
+      --bg-2: #161616;
+      --fg: #f6f5f1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .stage {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px;
+      gap: 60px;
+      position: relative;
+    }
+    .placeholder-banner {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      right: 40px;
+      padding: 16px 24px;
+      background: rgba(255, 60, 60, 0.15);
+      border: 2px dashed rgba(255, 60, 60, 0.6);
+      color: #ffb4b4;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      border-radius: 12px;
+    }
+    .token {
+      font-size: 144px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      text-shadow: 0 0 40px rgba(0, 255, 157, 0.3);
+    }
+    .script {
+      font-size: 44px;
+      line-height: 1.35;
+      text-align: center;
+      max-width: 900px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+    .footer {
+      position: absolute;
+      bottom: 80px;
+      left: 80px;
+      right: 80px;
+      text-align: center;
+      font-size: 22px;
+      color: rgba(246, 245, 241, 0.4);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body data-fps="30" data-duration-seconds="30">
+  <div class="placeholder-banner">PLACEHOLDER COMPOSITION — replace templates/placeholder.html before shipping</div>
+
+  <div class="stage">
+    <div class="token" data-start="0" data-duration="30">${{TOKEN}}</div>
+    <div class="script" data-start="0" data-duration="30">{{SCRIPT}}</div>
+  </div>
+
+  <div class="footer">hyperfaceless-render-node · budget mode · {{TOKEN}}</div>
+
+  <audio data-start="0" data-duration="30" src="{{AUDIO_URL}}" preload="auto"></audio>
+
+  <script id="captions" type="application/json">{{CAPTIONS_JSON}}</script>
+</body>
+</html>
